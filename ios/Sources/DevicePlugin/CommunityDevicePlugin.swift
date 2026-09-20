@@ -10,7 +10,7 @@ public class CommunityDevicePlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "CommunityDevicePlugin"
     public let jsName = "CommunityDevice"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "getInfo", returnType: CAPPluginReturnPromise)
+        CAPPluginMethod(name: "getInfo", returnType: .promise)
     ]
     private let implementation = CommunityDevice()
 

@@ -2,14 +2,22 @@ import XCTest
 @testable import DevicePlugin
 
 class DeviceTests: XCTestCase {
-    func testEcho() {
-        // This is an example of a functional test case for a plugin.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testDiskSizesAreReported() throws {
+        let implementation = CommunityDevice()
 
-        let implementation = Device()
-        let value = "Hello, World!"
-        let result = implementation.echo(value)
+        let total = try XCTUnwrap(implementation.getTotalDiskSize())
+        let free = try XCTUnwrap(implementation.getFreeDiskSize())
 
-        XCTAssertEqual(value, result)
+        XCTAssertGreaterThan(total, 0)
+        XCTAssertGreaterThan(free, 0)
+        XCTAssertLessThanOrEqual(free, total)
+    }
+
+    func testPluginIsBridgedUnderItsJavaScriptName() {
+        let plugin = CommunityDevicePlugin()
+
+        XCTAssertEqual(plugin.identifier, "CommunityDevicePlugin")
+        XCTAssertEqual(plugin.jsName, "CommunityDevice")
+        XCTAssertEqual(plugin.pluginMethods.map(\.name), ["getInfo"])
     }
 }
