@@ -10,11 +10,11 @@ public class CommunityDevicePlugin: CAPPlugin, CAPBridgedPlugin {
     public let identifier = "CommunityDevicePlugin"
     public let jsName = "CommunityDevice"
     public let pluginMethods: [CAPPluginMethod] = [
-        CAPPluginMethod(name: "getInfo", returnType: .promise)
+        .promise("getInfo", CommunityDevicePlugin.getInfo)
     ]
     private let implementation = CommunityDevice()
 
-    @objc func getInfo(_ call: CAPPluginCall) {
+    func getInfo(_ call: CAPPluginCall) {
 
         let diskFree = implementation.getFreeDiskSize() ?? 0
         let realDiskFree = implementation.getRealFreeDiskSize() ?? 0
