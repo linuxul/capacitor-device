@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/device",
-  "version": "8.0.0",
+  "version": "9.0.0",
   "description": "This plugin offers the API which has been removed from @capacitor/device plugin in v7.0 (getInfo() no longer returns diskFree, diskTotal, realDiskFree and realDiskTotal)",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -69,7 +69,7 @@
     "typescript": "~5.1.6"
   },
   "peerDependencies": {
-    "@capacitor/core": ">=8.0.0"
+    "@capacitor/core": ">=9.0.0"
   },
   "prettier": "@ionic/prettier-config",
   "swiftlint": "@ionic/swiftlint-config",
